@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seattle Jazz Camp</title>
+<meta name="description" content="Seattle Jazz Camp with Jay Thomas and Michael Van Bebber. August 9th–13th, 2027, 11am–5pm at the Phinney Center Blue Building. Register now for 2027.">
+<link rel="canonical" href="https://www.seattlejazzcamp.com">
+<meta property="og:site_name" content="Seattle Jazz Camp">
+<meta property="og:title" content="Seattle Jazz Camp — Register now for 2027!">
+<meta property="og:description" content="August 9th–13th, 2027 (11am–5pm) · Phinney Center Blue Building · with Jay Thomas and Michael Van Bebber">
+<meta property="og:image" content="https://www.seattlejazzcamp.com/images/camp-group.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     STRIPE SETUP (one line)
+     1. Stripe Dashboard: Product catalog → Payment links → + New
+     2. Product "Camp Tuition", price $650.00, one-time
+     3. Copy the link (https://buy.stripe.com/xxxxxxxx)
+     4. Paste it below, replacing the placeholder.
+     ============================================================ -->
+<script>
+  window.STRIPE_PAYMENT_LINK = "https://book.stripe.com/28E8wQ9TQaLYbvX3xJbMQ00";
+</script>
+
+<style>
+  :root{
+    --sand:#efe6d6;        /* page background */
+    --sand-2:#e6dbc6;      /* alternate section */
+    --card:#faf6ee;        /* cards */
+    --teal:#1f3d4a;        /* deep section + buttons */
+    --teal-2:#183341;
+    --brass:#c98a2e;       /* accent */
+    --brass-2:#b3781f;
+    --brass-br:#e0a33a;   /* brighter brass for buttons */
+    --brass-br2:#f2b949;
+    --green:#0e8f40;      /* open-spot counts */
+    --ink:#22201c;
+    --ink-2:#4d4840;
+    --muted:#7a7268;
+    --line:#d8ccb4;
+    --serif:"Lora", Georgia, "Times New Roman", serif;
+    --sans:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    --max:1060px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65}
+  img{max-width:100%;display:block}
+  a{color:var(--teal)}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.2;margin:0 0 .6em}
+  h1{font-size:clamp(2.4rem,5.5vw,4rem)}
+  h2{font-size:clamp(1.8rem,3.4vw,2.4rem)}
+  h3{font-size:1.35rem}
+  p{margin:0 0 1em}
+  :focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--teal);color:#fff;padding:.5rem 1rem;z-index:100}
+  .skip:focus{left:1rem;top:1rem}
+  .wrap{width:min(var(--max),calc(100% - 3rem));margin:0 auto}
+
+  /* Header */
+  .header{background:var(--teal);color:#fff;position:sticky;top:0;z-index:20;border-bottom:3px solid var(--brass)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
+  .brand-group{display:flex;align-items:center;gap:1.1rem;min-width:0}
+  .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:#fff;font-family:var(--serif);font-size:1.3rem;font-weight:600;white-space:nowrap}
+  .header-dates{margin:0;font-size:.9rem;color:rgba(255,255,255,.85);padding-left:1.1rem;border-left:1px solid rgba(255,255,255,.28);white-space:nowrap}
+  .brand img{width:42px;height:42px;object-fit:contain;background:#fff;border-radius:4px;padding:2px}
+  .nav-links{display:flex;align-items:center;gap:1.35rem;list-style:none;margin:0;padding:0}
+  .nav-links a{color:#fff;text-decoration:none;font-size:.95rem;white-space:nowrap}
+  .nav-links a:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--brass)}
+  .nav-links a.btn{text-decoration:none;color:var(--ink)}
+  .menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.45rem .7rem;cursor:pointer;color:#fff;font:inherit}
+
+  /* Buttons */
+  .btn{display:inline-block;background:var(--brass-br);color:var(--ink);text-decoration:none;font-weight:700;padding:.85rem 1.6rem;border-radius:4px;border:1px solid var(--brass-br);font-size:1rem;line-height:1.2;text-align:center;
+       transition:background .15s ease,border-color .15s ease,transform .15s ease,box-shadow .15s ease}
+  .btn:hover{background:var(--brass-br2);border-color:var(--brass-br2);transform:translateY(-2px);box-shadow:0 6px 16px rgba(34,32,28,.25)}
+  .btn:active{transform:translateY(0);box-shadow:0 2px 6px rgba(34,32,28,.2)}
+  .btn-teal{background:var(--teal);border-color:var(--teal);color:#fff}
+  .btn-teal:hover{background:var(--teal-2);border-color:var(--teal-2);transform:translateY(-2px);box-shadow:0 6px 16px rgba(31,61,74,.3)}
+  .btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+  .btn-outline:hover{background:rgba(255,255,255,.14);border-color:#fff;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.2)}
+  .btn-outline-dark{background:transparent;color:var(--teal);border-color:var(--teal)}
+  .btn-outline-dark:hover{background:rgba(31,61,74,.08);transform:translateY(-2px);box-shadow:0 6px 16px rgba(31,61,74,.18)}
+  @media (prefers-reduced-motion:reduce){.btn,.btn:hover{transition:none;transform:none}}
+  .btn-small{padding:.55rem 1.1rem;font-size:.95rem}
+  .btn-wide{display:block;width:100%}
+
+  /* Hero — full-width photo, text band beneath */
+  .hero-photo{background:var(--teal)}
+  .hero-photo img{width:100%;height:auto;aspect-ratio:5712/2711;object-fit:cover;object-position:center 85%}
+  .hero{background:var(--teal);color:#fff;border-bottom:4px solid var(--brass)}
+  .hero .wrap{padding:2.75rem 0 3rem;display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:center}
+  .hero h1{margin-bottom:.4rem}
+  .hero .when{font-size:clamp(1.05rem,1.8vw,1.25rem);margin-bottom:.25rem;color:rgba(255,255,255,.9)}
+  .hero .who{font-size:1.05rem;color:rgba(255,255,255,.8);margin-bottom:0}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:flex-end}
+
+  /* Openings strip */
+  .openings{background:var(--sand);border-top:4px solid var(--brass);border-bottom:1px solid var(--line)}
+  .openings .wrap{padding:1.9rem 0;display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:baseline}
+  .openings strong{font-family:var(--serif);font-size:clamp(1.25rem,2.2vw,1.55rem);color:var(--teal)}
+  .openings span{color:var(--ink);font-size:clamp(1.02rem,1.6vw,1.15rem);font-weight:600}
+  .openings .n{color:var(--green);font-weight:700}
+
+  /* Sections */
+  .section{padding:4rem 0}
+  .section.deep{background:var(--sand-2);border-bottom:1px solid var(--line)}
+  .section.deep h2{color:var(--teal)}
+  .section.deep .lead{color:var(--ink-2);max-width:60ch;margin-bottom:2rem}
+
+  /* Tuition — Step 1 / Step 2 */
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+  .steps.single{grid-template-columns:minmax(0,560px)}
+  .steps.single .card{padding-top:2rem}
+  .card{background:var(--card);color:var(--ink);border-radius:8px;padding:2.25rem 2rem 2rem;position:relative;border-top:5px solid var(--brass);box-shadow:0 6px 24px rgba(34,32,28,.08)}
+  .step{position:absolute;top:-16px;left:1.5rem;background:var(--brass);color:var(--ink);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .8rem;border-radius:4px}
+  .product{display:flex;gap:1.5rem;align-items:flex-start}
+  .product img{width:100px;height:100px;object-fit:contain;flex:none;background:#fff;border-radius:6px;padding:4px;border:1px solid var(--line)}
+  .product h3{margin-bottom:.2em}
+  .price{font-family:var(--serif);font-size:2.3rem;font-weight:600;margin:0 0 .5rem;color:var(--teal)}
+  .product p{color:var(--ink-2)}
+  .note{font-size:.95rem;color:var(--muted);margin:.75rem 0 0}
+  .alt-pay{margin:1.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--line);color:var(--ink-2)}
+  .alt-pay strong{color:var(--ink)}
+  .card p{color:var(--ink-2)}
+  .contact{margin:1.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--line);color:var(--ink-2)}
+  .contact a{color:var(--ink)}
+
+  /* Story */
+  .story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:start}
+  .story-grid .intro{font-family:var(--serif);font-size:1.25rem;line-height:1.5;color:var(--ink)}
+  .story-grid p{color:var(--ink-2)}
+  .photos{display:grid;gap:1rem}
+  .photos img{width:100%;height:auto;border-radius:6px}
+  blockquote{margin:2.5rem 0 0;padding:1.5rem 2rem;border-left:5px solid var(--brass);background:var(--card);border-radius:0 8px 8px 0}
+  blockquote p{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ink);margin-bottom:.75rem}
+  blockquote footer{color:var(--muted)}
+
+  /* Instructors */
+  .section.alt{background:var(--sand-2)}
+  .people{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem}
+  .people img{width:100%;height:auto;border-radius:6px;margin-bottom:.9rem}
+  .people h3{margin:0}
+
+  /* Location */
+  address{font-style:normal;color:var(--ink-2);font-size:1.1rem;line-height:1.6}
+
+  /* Footer */
+  .footer{background:var(--teal);color:rgba(255,255,255,.75);padding:2rem 0;font-size:.95rem}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .footer a{color:#fff;text-decoration:none}
+  .footer a:hover{text-decoration:underline}
+  .footer ul{list-style:none;margin:0;padding:0;display:flex;gap:1.25rem;flex-wrap:wrap}
+
+  /* Lightbox */
+  .zoom{display:block;cursor:zoom-in}
+  .zoom img{transition:opacity .15s}
+  .zoom:hover img{opacity:.92}
+  .lightbox{position:fixed;inset:0;background:rgba(20,30,36,.94);display:none;align-items:center;justify-content:center;z-index:100;padding:2rem}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+  .lightbox button{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:4px;font:inherit;font-size:1rem;padding:.5rem .9rem;cursor:pointer}
+  .lightbox button:hover{background:rgba(255,255,255,.22)}
+
+  @media (max-width:1080px){
+    .header-dates{display:none}
+  }
+  @media (max-width:820px){
+    .steps,.story-grid,.people{grid-template-columns:1fr}
+    .hero .wrap{grid-template-columns:1fr}
+    .hero-actions{justify-content:flex-start}
+  }
+  @media (max-width:680px){
+    .menu-btn{display:block}
+    .nav-links{display:none;position:absolute;top:74px;left:0;right:0;background:var(--teal);border-bottom:3px solid var(--brass);flex-direction:column;align-items:flex-start;padding:1rem 1.5rem 1.25rem;gap:1rem}
+    .nav-links.open{display:flex}
+    .product{flex-direction:column}
+    .card{padding:2rem 1.5rem 1.5rem}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="header">
+  <div class="wrap nav">
+    <div class="brand-group">
+      <a class="brand" href="#top">
+        <img src="images/logo.png" alt="" width="42" height="42">
+        Seattle Jazz Camp
+      </a>
+      <p class="header-dates">August 9th -13th, 2027 (11am-5pm)</p>
+    </div>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#tuition">Tuition</a></li>
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="https://youtu.be/omjGm9qJwr8" target="_blank" rel="noopener">2022 Concert Video</a></li>
+        <li><a class="btn btn-small" href="#tuition">Register</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div id="top"></div>
+
+<div class="hero-photo">
+  <a class="zoom" href="images/camp-group.jpg"><img src="images/camp-group.jpg" alt="Seattle Jazz Camp students and directors" fetchpriority="high"></a>
+</div>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Register now for 2027!</h1>
+      <p class="when">August 9th -13th, 2027 (11am-5pm) - Phinney Center Blue Building</p>
+      <p class="who">Instructors: Jay Thomas and Michael Van Bebber</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn" href="#tuition">Register</a>
+      <a class="btn btn-outline" href="https://youtu.be/omjGm9qJwr8" target="_blank" rel="noopener">2022 Concert Video</a>
+    </div>
+  </div>
+</section>
+
+<div class="openings">
+  <div class="wrap">
+    <strong>Currently, we have spots open for:</strong>
+    <span>Trumpet <span class="n">(2)</span>, Saxophone <span class="n">(2)</span>, Trombone <span class="n">(2)</span>, Guitar <span class="n">(2)</span>, Piano <span class="n">(2)</span>, Bass <span class="n">(2)</span>, Drums <span class="n">(2)</span></span>
+  </div>
+</div>
+
+<section class="section deep" id="tuition">
+  <div class="wrap">
+    <h2>$650 Tuition (all-inclusive for the week)</h2>
+    <p class="lead">Register and pay online. You'll enter the student's name, instrument, grade level, and years of jazz experience during checkout.</p>
+    <div class="steps single">
+      <div class="card">
+        <div class="product">
+          <img src="images/logo.png" alt="Seattle Jazz Camp logo" width="100" height="100">
+          <div style="flex:1">
+            <h3>Camp Tuition</h3>
+            <p class="price">$650.00</p>
+            <p>The tuition fee is all-inclusive, covering instruction for the entire week.</p>
+            <a class="btn btn-wide" id="stripe-btn" href="#">Register &amp; Pay</a>
+            <p class="note">Secure card payment through Stripe.</p>
+          </div>
+        </div>
+        <p class="alt-pay"><strong>Tuition is non-refundable.</strong></p>
+        <p class="contact">Questions? Email <a href="mailto:mvanbebber@gmail.com">mvanbebber@gmail.com</a> or call <a href="tel:+12068534687">(206) 853-4687</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="our-story">
+  <div class="wrap">
+    <h2>Our Story</h2>
+    <div class="story-grid">
+      <div>
+        <p class="intro">The Jay Thomas/Michael Van Bebber Jazz Camp began in the Summer of 2021.</p>
+        <p>The camp focuses on Hard Bop music and is held at the Phinney Ridge Community Center. It runs Monday thru Friday from 11:00am to 5:00pm. At the end of the week, on Friday at 3pm, we will have an open performance that friends and family and the general community can attend.</p>
+        <p>Students are placed in two groups, each 6-7 musicians, based on general skill level. Because of the small size and intimacy of the camp, learning is accelerated through immersion in Jazz. For some students, this means making progress that would normally take a year, compressed into one week.</p>
+      </div>
+      <div class="photos">
+        <a class="zoom" href="images/jay-thomas.jpg"><img src="images/jay-thomas.jpg" alt="Jay Thomas directing a small group at Seattle Jazz Camp" loading="lazy"></a>
+        <a class="zoom" href="images/michael-van-bebber.jpg"><img src="images/michael-van-bebber.jpg" alt="Seattle Jazz Camp big group rehearsal" loading="lazy"></a>
+      </div>
+    </div>
+    <blockquote>
+      <p>"The day is not chopped up into different classes, so it's all about the playing. When it comes to the study of theory and technique on the various instruments, we weave that into the music that we are performing... we teach exactly what they need to know to perform the songs we are working on... This camp serves as a running start for kids getting back into jazz programs after being off for the summer."</p>
+      <footer>— Jay Thomas</footer>
+    </blockquote>
+  </div>
+</section>
+
+<section class="section alt" id="instructors">
+  <div class="wrap">
+    <h2>Instructors</h2>
+    <div class="people">
+      <div>
+        <a class="zoom" href="images/jay-thomas.jpg"><img src="images/jay-thomas.jpg" alt="Jay Thomas" loading="lazy"></a>
+        <h3>Jay Thomas</h3>
+      </div>
+      <div>
+        <a class="zoom" href="images/michael-van-bebber.jpg"><img src="images/michael-van-bebber.jpg" alt="Michael Van Bebber" loading="lazy"></a>
+        <h3>Michael Van Bebber</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="location">
+  <div class="wrap">
+    <h2>Camp Location:</h2>
+    <address>Phinney Community Center, Blue Building (Rooms 2, 5 and 6)<br>6532 Phinney Ave N, Seattle, WA 98103</address>
+    <p style="margin-top:1.5rem"><a class="btn" href="#tuition">Register</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>Seattle Jazz Camp · <a href="mailto:mvanbebber@gmail.com">mvanbebber@gmail.com</a> · <a href="tel:+12068534687">(206) 853-4687</a></div>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#tuition">Tuition</a></li>
+      <li><a href="#our-story">Our Story</a></li>
+      <li><a href="https://youtu.be/omjGm9qJwr8" target="_blank" rel="noopener">2022 Concert Video</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo">
+  <button type="button" id="lightbox-close">Close ✕</button>
+  <img src="" alt="">
+</div>
+
+<script>
+(function(){
+  var link = window.STRIPE_PAYMENT_LINK || "", btn = document.getElementById("stripe-btn");
+  if (link && link.indexOf("REPLACE_WITH") === -1) { btn.href = link; }
+  else { btn.addEventListener("click", function(e){ e.preventDefault(); alert("Online registration is temporarily unavailable. Please email mvanbebber@gmail.com or call (206) 853-4687."); }); }
+
+  var mb = document.querySelector(".menu-btn"), links = document.getElementById("nav-links");
+  mb.addEventListener("click", function(){ var o = links.classList.toggle("open"); mb.setAttribute("aria-expanded", o ? "true" : "false"); });
+  links.addEventListener("click", function(e){ if (e.target.tagName === "A") { links.classList.remove("open"); mb.setAttribute("aria-expanded","false"); } });
+
+  // Lightbox — click any photo to view it full size
+  var lb = document.getElementById("lightbox"), lbImg = lb.querySelector("img"), lbClose = document.getElementById("lightbox-close"), lastFocus;
+  function openLb(src, alt){ lbImg.src = src; lbImg.alt = alt || ""; lb.classList.add("open"); document.body.style.overflow = "hidden"; lastFocus = document.activeElement; lbClose.focus(); }
+  function closeLb(){ lb.classList.remove("open"); lbImg.src = ""; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+  document.querySelectorAll("a.zoom").forEach(function(a){
+    a.addEventListener("click", function(e){ e.preventDefault(); openLb(a.getAttribute("href"), a.querySelector("img").alt); });
+  });
+  lbClose.addEventListener("click", closeLb);
+  lb.addEventListener("click", function(e){ if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && lb.classList.contains("open")) closeLb(); });
+})();
+</script>
+</body>
+</html>
