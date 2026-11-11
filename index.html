@@ -169,6 +169,16 @@
   .lightbox button{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:4px;font:inherit;font-size:1rem;padding:.5rem .9rem;cursor:pointer}
   .lightbox button:hover{background:rgba(255,255,255,.22)}
 
+  /* Scroll motion — reveals + hero parallax (JS adds .motion to <html>) */
+  .hero-photo{overflow:hidden}
+  .motion .hero-photo img{will-change:transform}
+  .header{transition:box-shadow .3s ease}
+  .header.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.18)}
+  .motion .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .motion .reveal.zoomin{transform:translateY(32px) scale(.96)}
+  .motion .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.motion .reveal{opacity:1;transform:none;transition:none}}
+
   @media (max-width:1080px){
     .header-dates{display:none}
   }
@@ -344,6 +354,41 @@
   lbClose.addEventListener("click", closeLb);
   lb.addEventListener("click", function(e){ if (e.target === lb) closeLb(); });
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && lb.classList.contains("open")) closeLb(); });
+  // Scroll motion: elements ease into view; hero photo drifts slower than the page
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var header = document.querySelector(".header");
+  function onHeader(){ header.classList.toggle("scrolled", window.scrollY > 10); }
+  window.addEventListener("scroll", onHeader, {passive:true}); onHeader();
+  if (!still && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("motion");
+    var groups = [
+      [".hero h1, .hero .when, .hero .who, .hero-actions .btn"],
+      [".openings strong, .openings .wrap > span"],
+      [".section h2, .section .lead"],
+      [".card", "zoomin"],
+      [".story-grid .intro, .story-grid p"],
+      [".photos .zoom", "zoomin"],
+      ["blockquote"],
+      [".people > div", "zoomin"],
+      ["address, #location .btn"]
+    ];
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, {rootMargin:"0px 0px -8% 0px", threshold:0.12});
+    groups.forEach(function(g){
+      var seen = new Map();
+      document.querySelectorAll(g[0]).forEach(function(el){
+        var n = seen.get(el.parentNode) || 0; seen.set(el.parentNode, n + 1);
+        el.classList.add("reveal"); if (g[1]) el.classList.add(g[1]);
+        el.style.setProperty("--d", Math.min(n, 6) * 0.09 + "s");
+        io.observe(el);
+      });
+    });
+    var heroImg = document.querySelector(".hero-photo img"), ticking = false;
+    function para(){ ticking = false; var y = window.scrollY, h = heroImg.offsetHeight || 1;
+      if (y < h * 1.2) heroImg.style.transform = "translateY(" + (y * 0.3) + "px) scale(" + (1 + Math.min(y / h, 1) * 0.06) + ")"; }
+    window.addEventListener("scroll", function(){ if (!ticking) { ticking = true; requestAnimationFrame(para); } }, {passive:true});
+  }
 })();
 </script>
 </body>
